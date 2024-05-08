@@ -1,0 +1,42 @@
+﻿<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publish Date</th>
+        <th>Pages</th>
+        <th>Genre</th>
+        <th>Synopsis</th>
+        <th>Rating</th>
+        <th/>
+        <th />
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Id</td>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.PublishDate.ToString("dd/MM/yyyy")</td>
+            <td>@book.Pages</td>
+            <td>@book.Genre.ToString()</td>
+            <td>@book.Synopsis</td>
+            <td>@book.Rating</td>
+            <td>
+                <form asp-controller="Books" asp-action="Edit" asp-route-id="@book.Id" method="get">
+                    <input type="submit" value="Edit Book" class=""/>
+                </form>
+            </td>
+            <td>
+                <form asp-controller="Books" asp-action="Delete" asp-route-id="@book.Id"
+                      onclick="return confirm('Are you sure you want to delete ' + '@book.Title' + '?')">
+                    <input type="submit" value="Delete Book" class=""/>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

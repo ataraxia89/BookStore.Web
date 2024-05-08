@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Book List";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Books" asp-action="Add" method="get">
+    <input type="submit" value="Add New Book" class="" />
+</form>
+
+@await Component.InvokeAsync("BookList")
